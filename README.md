@@ -3,15 +3,17 @@
 Starter app based on ```create-react-app``` and adding these components:
 
 * redux
-* redux-logic (middleware for async processing)
+* redux-logic            (middleware for async processing)
 * react-router-dom
 * react-router-redux
 * history
-* redux-actions (reduce boilerplate for actions and reducers)
+* redux-actions          (reduce boilerplate for actions and reducers)
+* redux-form             (simple example in HelloComponent)
 * axios
-* simple-console-logger
+* simple-console-logger  (simple log4j like logger, configured in index.js)
 
-The structure is:
+Everything is wired up, including a sample "hello" component including tests. Just
+start by replacing this with your own components. The structure is:
 
 ```
 store/
@@ -24,5 +26,6 @@ hello/               (A simple starter component - start here and replace with y
   hello.js           (ducks style reducer and actions)
   helloLogic.js      (redux-logic for handling async action)
   hello.test.js      (tests actions/reducers/logic)
-  HelloComponent.js  (Component with buttons to say hello and say hello async)
+  HelloContainer.js  (redux container)
+  HelloComponent.js  (Component with buttons to say hello and say hello async and redux form validation)
 ```

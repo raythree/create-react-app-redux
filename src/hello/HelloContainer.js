@@ -10,6 +10,7 @@ class HelloContainer extends React.Component {
       message={this.props.message} 
       sayHello={this.props.sayHello}
       sayHelloAsync={this.props.sayHelloAsync}
+      pending={this.props.pending}
     />
   }
 }

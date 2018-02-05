@@ -20,7 +20,7 @@ const reducer = handleActions({
     return {...state, message: action.payload}
   },
   [sayHelloAsync](state, action) {
-    return {...state, pending: true};    
+    return {...state, pending: true, message: ''};    
   },
   [sayHelloComplete](state, action) {
     return {...state, pending: false, message: action.payload};    

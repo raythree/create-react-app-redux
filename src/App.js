@@ -5,9 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 import Logger from 'simple-console-logger';
 
-import { HelloContainer } from './hello/HelloContainer';
-import logo from './logo.svg';
-import './App.css';
+import HelloContainer from './hello/HelloContainer';
 
 Logger.configure({level: 'debug'});
 
