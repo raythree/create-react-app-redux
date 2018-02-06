@@ -5,6 +5,12 @@ const defaultState = {
   pending: false
 };
 
+//
+// NOTE: There is a pull request for redux-actions that will soon allow adding:
+//   { prefix: 'my/app/actions' }
+// to createActions that will pre-pend this to the created
+// action constants.
+//
 export const { 
   sayHello, 
   sayHelloAsync,
