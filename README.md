@@ -16,6 +16,7 @@ Starter app based on ```create-react-app``` and adding these components:
 ```
 git clone https://github.com/raythree/create-react-app-redux
 cd create-react-app-redux
+rm -fr .git
 npm install
 npm start
 ```
