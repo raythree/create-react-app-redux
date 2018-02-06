@@ -10,7 +10,7 @@ const delay = () => {
 export default [
   createLogic({
     type: sayHelloAsync,
-    debounce: process.env.NODE_ENV === 'test' ? 0 : 500,
+    //debounce: process.env.NODE_ENV === 'test' ? 0 : 500,
     latest: true,
 
     process({ action }, dispatch, done) {
@@ -19,6 +19,7 @@ export default [
       .then(() => {
         console.log('dispatching complete action');
         dispatch(sayHelloComplete(action.payload));
+        done();
       });
     }  
   })

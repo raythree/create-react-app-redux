@@ -20,8 +20,8 @@ const renderField = ({
   <div>
     <label style={labelStyle}>{label}</label>
     <div>
-      <input {...input} placeholder={label} type={type} style={inputStyle}/>
-      {touched && ((error && <span>{error}</span>))}
+      <input {...input} placeholder={label} type={type} style={inputStyle} autoComplete="off"/>
+      {touched && ((error && <span style={{color:'red'}}>{error}</span>))}
     </div>
   </div>
 );
@@ -29,6 +29,9 @@ const renderField = ({
 const validate = (values) => {
   let errors = {};
   log.debug('validating form...');
+  if (!values.message || values.message.length < 3) {
+    errors.message = 'Message must be at least 3 characters';
+  }
   return errors;
 }
 
@@ -49,24 +52,14 @@ class HelloComponent extends React.Component {
     this.state = {message: ''};
   }
 
-  hello = () => {
-    console.log('hello')
-    this.props.sayHello(this.state.message);
-  }
-  helloAsync = () => {
-    console.log('hello async')
-    this.props.sayHelloAsync(this.state.message);
-  }
-  changeMessage = (e) => {
-    this.setState({message: e.target.value});
-  }
-
   onSubmit = (values) => {
-    console.log('submit', values);
+    log.debug('submitting form');
+    let fn = values.async ? this.props.sayHelloAsync : this.props.sayHello;
+    fn(values.message);
   }
 
   render() {    
-    const { handleSubmit, pristine, reset, submitting } = this.props
+    const { handleSubmit } = this.props
 
     const buttonStyle={padding:'1em', margin: '1em'};
     const inputStyle={padding: '1em', margin: '1em'};
@@ -83,11 +76,19 @@ class HelloComponent extends React.Component {
             label="Message"
             component={renderField}
           />
+          <div style={{marginLeft:'1em'}}>
+            Async
+            <Field
+              name="async"
+              id="async"
+              component="input"
+              type="checkbox"
+              style={{marginLeft:'1em'}}
+            />
+          </div>
           <br/>
-          <button style={buttonStyle} disabled={submitting} onClick={this.hello}>Say Hello</button>
-          <button style={buttonStyle} disabled={submitting} onClick={this.helloAsync}>Say Hello Async</button>
+          <button style={buttonStyle} disabled={this.props.pending} onClick={this.hello}>Say Hello</button>
         </form>  
-        <br/>
         <div style={{padding:'1em'}}>
           {this.props.pending ? 'please wait...': ''}
           {this.props.message ? 'Hello ' + this.props.message : ''}
