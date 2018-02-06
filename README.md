@@ -12,6 +12,14 @@ Starter app based on ```create-react-app``` and adding these components:
 * axios
 * simple-console-logger  (simple log4j like logger, configured in index.js)
 
+## Usage
+```
+git clone https://github.com/raythree/create-react-app-redux
+cd create-react-app-redux
+npm install
+npm start
+```
+
 Everything is wired up, including a sample "hello" component including tests. Just
 start by replacing this with your own components. The structure is:
 
