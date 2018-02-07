@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import renderer from 'react-test-renderer';
 
 import configureStore, { history } from './store'; 
 
@@ -11,7 +12,7 @@ beforeEach(() => {
 });
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App store={store} history={history}/>, div);
-  ReactDOM.unmountComponentAtNode(div);
+  const component = renderer.create(
+    <App store={store} history={history}/>
+  );
 });
